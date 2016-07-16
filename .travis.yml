@@ -1,0 +1,65 @@
+language: php
+
+sudo: false
+
+php:
+  - 5.6
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: hhvm
+
+env:
+  global:
+    - PATH="$PATH:$HOME/.composer/vendor/bin"
+
+    # Configuration variables.
+    - DRUPAL_TI_MODULE_NAME="quiz"
+    - DRUPAL_TI_SIMPLETEST_GROUP="Quiz"
+
+    # The environment to use, supported are: drupal-7, drupal-8
+    - DRUPAL_TI_ENVIRONMENT="drupal-7"
+
+    # Drupal specific variables.
+    - DRUPAL_TI_DB="drupal_travis_db"
+    - DRUPAL_TI_DB_URL="mysql://root:@127.0.0.1/drupal_travis_db"
+    # Note: Do not add a trailing slash here.
+    - DRUPAL_TI_WEBSERVER_URL="http://127.0.0.1"
+    - DRUPAL_TI_WEBSERVER_PORT="8080"
+
+    # Simpletest specific commandline arguments, the DRUPAL_TI_SIMPLETEST_GROUP is appended at the end.
+    - DRUPAL_TI_SIMPLETEST_ARGS="--verbose --color --concurrency 4 --url $DRUPAL_TI_WEBSERVER_URL:$DRUPAL_TI_WEBSERVER_PORT"
+
+    # PHPUnit specific commandline arguments.
+    - DRUPAL_TI_PHPUNIT_ARGS=""
+
+  matrix:
+    #- DRUPAL_TI_RUNNERS="phpunit-core simpletest"
+    - DRUPAL_TI_RUNNERS="simpletest"
+
+mysql:
+  database: drupal_travis_db
+  username: root
+  encoding: utf8
+
+before_install:
+  - composer self-update
+  - cd ./tests
+  - composer global require "lionsad/drupal_ti:1.*"
+  - drupal-ti before_install
+
+install:
+  - drupal-ti install
+
+before_script:
+  - drupal-ti before_script
+
+script:
+  - drupal-ti script
+
+after_script:
+  - drupal-ti after_script
+
+notifications:
+  email: false
