@@ -8,6 +8,8 @@ use Drupal\simpletest\WebTestBase;
 /**
  * Base test class for Quiz functional tests.
  *
+ * @group Quiz
+ *
  * @todo Change to abstract class.
  */
 class QuizTestBase extends WebTestBase {
