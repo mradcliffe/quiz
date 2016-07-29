@@ -1,0 +1,13 @@
+type: module
+name: Quiz
+package: 'Quiz core'
+description: 'Create interactive quizzes. This module must have at least one question type module enabled in order to function properly.'
+core: 8.x
+dependencies:
+  - views
+  - filter
+#  - ctools
+#  - rules
+#  - token
+test_dependencies:
+  - taxonomy
