@@ -14,9 +14,7 @@ use Drupal\simpletest\WebTestBase;
  */
 class QuizTestBase extends WebTestBase {
 
-  protected $profile = 'testing';
-
-  protected $modules = ['views', 'quiz'];
+  static protected $modules = ['views', 'quiz'];
 
   /**
    * {@inheritdoc}
