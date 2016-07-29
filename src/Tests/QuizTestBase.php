@@ -23,7 +23,12 @@ class QuizTestBase extends WebTestBase {
    */
   protected function setUp() {
     parent::setUp();
+  }
 
+  /**
+   * A simple test to assert that the module was installed.
+   */
+  public function testModuleInstalled() {
     /** @var \Drupal\Core\Extension\ModuleHandlerInterface $module_handler */
     $module_handler = \Drupal::service('module_handler');
 
