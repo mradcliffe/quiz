@@ -27,6 +27,16 @@
  */
 
 /**
+ * Implements hook_quiz_question_info_alter().
+ *
+ * @param array &$question_types
+ *   An array of question type plugin definitions.
+ */
+function hook_quiz_question_info_alter(&$question_types) {
+  $question_types['short_answer'] = 'Drupal\my_module\Plugin\quiz\Question\ShortAnswer';
+}
+
+/**
  * Implements hook_quiz_begin().
  *
  * Fired when a new quiz result is created.

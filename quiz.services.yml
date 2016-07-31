@@ -1,0 +1,4 @@
+services:
+  quiz.question_type.manager:
+    class: Drupal\quiz\QuestionManager
+    arguments: ['@entity_type.manager', '@container.namespaces', '@cache.discovery', '@module_handler']

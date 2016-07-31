@@ -7,7 +7,7 @@ use Drupal\Component\Annotation\Plugin;
 /**
  * Defines a quiz question plugin annotation object.
  *
- * Plugin namespace: Plugin\QuizQuestion
+ * Plugin namespace: Plugin\quiz\Question
  *
  * @Annotation
  */
