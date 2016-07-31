@@ -1,0 +1,4 @@
+administer quiz configuration:
+  title: 'Administer quiz configuration'
+  description: 'Control the various settings and behaviours of quiz.'
+  restrict access: TRUE

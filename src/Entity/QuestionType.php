@@ -10,7 +10,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *   id = "quiz_question_type",
  *   label = @Translation("Question Type"),
  *   handlers = {},
- *   admin_permission = "",
+ *   admin_permission = "administer quiz configuration",
  *   config_prefix = "",
  *   bundle_of = "quiz_question",
  *   entity_keys = {
