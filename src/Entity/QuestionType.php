@@ -11,6 +11,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *   label = @Translation("Question Type"),
  *   handlers = {
  *     "access" = "Drupal\Core\Entity\EntityAccessControlHandler",
+ *     "list_builder" = "Drupal\quiz\QuestionTypeListBuilder",
  *     "form" = {
  *       "add" = "Drupal\quiz\QuestionTypeForm",
  *       "edit" = "Drupal\quiz\QuestionTypeForm",
