@@ -10,12 +10,13 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *   id = "quiz_question_type",
  *   label = @Translation("Question Type"),
  *   handlers = {
- *    "form" = {
- *      "add" = "Drupal\quiz\QuestionTypeForm",
- *      "edit" = "Drupal\quiz\QuestionTypeForm",
- *      "delete" = "Drupal\quiz\Form\QuestionTypeDeleteConfirm"
- *      },
- *    },
+ *     "access" = "Drupal\Core\Entity\EntityAccessControlHandler",
+ *     "form" = {
+ *       "add" = "Drupal\quiz\QuestionTypeForm",
+ *       "edit" = "Drupal\quiz\QuestionTypeForm",
+ *       "delete" = "Drupal\quiz\Form\QuestionTypeDeleteConfirm"
+ *     }
+ *   },
  *   admin_permission = "administer quiz configuration",
  *   config_prefix = "",
  *   bundle_of = "quiz_question",
