@@ -1,33 +1,33 @@
 <?php
 
-
 namespace Drupal\quiz\Entity;
+
 
 use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
 
 /**
- * Question bundle entity.
+ * Question Response bundle entity.
  *
  * @ConfigEntityType(
- *   id = "quiz_question_type",
- *   label = @Translation("Question Type"),
+ *   id = "quiz_question_response_type",
+ *   label = @Translation("Question Response Type"),
  *   handlers = {
  *     "access" = "Drupal\Core\Entity\EntityAccessControlHandler",
- *     "list_builder" = "Drupal\quiz\QuestionTypeListBuilder"
+ *     "list_builder" = "Drupal\quiz\QuestionResponseTypeListBuilder"
  *   },
  *   admin_permission = "administer quiz configuration",
  *   config_prefix = "",
- *   bundle_of = "quiz_question",
+ *   bundle_of = "quiz_question_response",
  *   entity_keys = {
  *     "id" = "type",
  *     "label" = "name"
  *   },
  *   config_export = {
- *     "name",
  *     "type",
+ *     "name",
  *     "plugin"
  *   }
  * )
  */
-class QuestionType extends ConfigEntityBundleBase {
+class QuestionResponseType extends ConfigEntityBundleBase {
 }

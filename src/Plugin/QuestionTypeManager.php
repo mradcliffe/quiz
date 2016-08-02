@@ -14,6 +14,7 @@ class QuestionTypeManager extends DefaultPluginManager {
 
   /**
    * Entity type manager.
+   *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
@@ -24,9 +25,9 @@ class QuestionTypeManager extends DefaultPluginManager {
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityManager
    *   The entity type manager.
    * @param \Traversable $namespaces
-   *   Namespaces
+   *   Namespaces.
    * @param \Drupal\Core\Cache\CacheBackendInterface $cacheBackend
-   *   The cache backend to store plugin definitions
+   *   The cache backend to store plugin definitions.
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $moduleHandler
    *   The moduler handler service.
    */
@@ -39,5 +40,3 @@ class QuestionTypeManager extends DefaultPluginManager {
   }
 
 }
-
-

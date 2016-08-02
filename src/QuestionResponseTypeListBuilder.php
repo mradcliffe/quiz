@@ -2,21 +2,20 @@
 
 namespace Drupal\quiz;
 
-
 use Drupal\Core\Config\Entity\ConfigEntityListBuilder;
 use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Defines a class to build a list of question types.
  */
-class QuestionTypeListBuilder extends ConfigEntityListBuilder {
+class QuestionResponseTypeListBuilder extends ConfigEntityListBuilder {
 
   /**
    * {@inheritdoc}
    */
   public function buildHeader() {
     $header['label'] = $this->t('Name');
-    $header['id'] = $this->t('Question Type');
+    $header['id'] = $this->t('Question Response Type');
     return $header;
   }
 

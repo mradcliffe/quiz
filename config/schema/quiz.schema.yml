@@ -11,3 +11,16 @@ quiz.quiz_question_type.*:
     plugin:
       type: plugin
       label: 'Plugin'
+quiz.quiz_question_response_type.*:
+  type: config_entity
+  label: 'Question Response Type'
+  mapping:
+    name:
+      type: label
+      label: 'Name'
+    type:
+      type: string
+      label: 'Machine Name'
+    plugin:
+      type: plugin
+      label: 'Plugin'
