@@ -1,29 +1,28 @@
 <?php
 
-
 namespace Drupal\Tests\quiz\Unit\Entity;
 
 use Drupal\Core\DependencyInjection\ContainerBuilder;
-use Drupal\quiz\Entity\QuestionType;
-use Drupal\quiz\QuestionTypeListBuilder;
+use Drupal\quiz\Entity\QuestionResponseType;
+use Drupal\quiz\QuestionResponseTypeListBuilder;
 use Drupal\Tests\UnitTestCase;
 use Prophecy\Argument;
 
 /**
- * Question type test.
+ * Question response type test.
  *
  * @group Quiz
  */
-class QuestionTypeTest extends UnitTestCase {
+class QuestionResponseTypeTest extends UnitTestCase {
 
   /**
-   * Assert that the question type class is returned.
+   * Assert that the question response type class is returned.
    */
-  public function testQuestionTypeEntity() {
+  public function testQuestionResponseTypeEntity() {
     $values = [];
-    $bundle = new QuestionType($values, 'quiz_question_type');
+    $bundle = new QuestionResponseType($values, 'quiz_question_response_type');
 
-    $this->assertInstanceOf('\Drupal\quiz\Entity\QuestionType', $bundle);
+    $this->assertInstanceOf('\Drupal\quiz\Entity\QuestionResponseType', $bundle);
   }
 
   /**
@@ -31,7 +30,7 @@ class QuestionTypeTest extends UnitTestCase {
    */
   public function testAccessHandlerExists() {
     $container = new ContainerBuilder();
-    $bundle = new QuestionType([], 'quiz_question_type');
+    $bundle = new QuestionResponseType([], 'quiz_question_type');
 
     $accountProphecy = $this->prophesize('\Drupal\Core\Session\AccountInterface');
     $account = $accountProphecy->reveal();
@@ -61,7 +60,7 @@ class QuestionTypeTest extends UnitTestCase {
 
     $question = $questionProphecy->reveal();
 
-    $listBuilder = new QuestionTypeListBuilder($questionTypeProphecy->reveal(), $storageProphecy->reveal());
+    $listBuilder = new QuestionResponseTypeListBuilder($questionTypeProphecy->reveal(), $storageProphecy->reveal());
     $expected_row = [
       'id' => 'long_answer',
       'label' => 'Long Answer',
@@ -69,14 +68,17 @@ class QuestionTypeTest extends UnitTestCase {
 
     $expected_header = [
       'label' => 'Name',
-      'id' => 'Question Type',
+      'id' => 'Question Response Type',
     ];
 
     $container = new ContainerBuilder();
     $translation = $this->getStringTranslationStub();
     $translation->expects($this->any())
       ->method('translate')
-      ->will($this->returnValueMap([['Name', 'Name'], ['Question Type', 'Question Type']]));
+      ->will($this->returnValueMap([
+        ['Name', 'Name'],
+        ['Question Response Type', 'Question ResponseType'],
+      ]));
 
     $container->set('string_translation', $translation);
     \Drupal::setContainer($container);

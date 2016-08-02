@@ -24,4 +24,3 @@ interface QuizQuestionInterface {
   public function getQuestionResponseFieldDefinitions();
 
 }
-
