@@ -133,17 +133,21 @@ namespace Drupal\Tests\quiz\Unit\Entity {
 
 namespace {
 
-  /**
-   * Mock the t() function used in static methods. DrupalWTF.
-   *
-   * @param string $value
-   *   The value to translate.
-   *
-   * @return string
-   *   Pass through for translation.
-   */
-  function t($value) {
-    return $value;
+  if (!function_exists('t')) {
+
+    /**
+     * Mock the t() function used in static methods. DrupalWTF.
+     *
+     * @param string $value
+     *   The value to translate.
+     *
+     * @return string
+     *   Pass through for translation.
+     */
+    function t($value) {
+      return $value;
+    }
+
   }
 
 }
