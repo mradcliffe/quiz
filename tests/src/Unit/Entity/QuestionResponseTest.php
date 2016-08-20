@@ -4,29 +4,27 @@ namespace Drupal\Tests\quiz\Unit\Entity {
 
   use Drupal\Core\DependencyInjection\ContainerBuilder;
   use Drupal\Core\Language\LanguageInterface;
-  use Drupal\quiz\Entity\Question;
+  use Drupal\quiz\Entity\QuestionResponse;
   use Drupal\Tests\UnitTestCase;
   use Prophecy\Argument;
 
   /**
-   * Test question entity.
+   * Test the question response entity.
    *
    * @group Quiz
    */
-  class QuestionTest extends UnitTestCase {
+  class QuestionResponseTest extends UnitTestCase {
 
     /**
      * {@inheritdoc}
      */
     protected function setUp() {
       $key_map = [
-        'langcode' => 'langcode',
-        'default_langcode' => LanguageInterface::LANGCODE_DEFAULT,
-        'revision' => 'revision_id',
-        'label' => 'title',
-        'status' => 'status',
-        'uid' => 'owner',
-        'bundle' => 'type',
+         'langcode' => 'langcode',
+         'default_langcode' => LanguageInterface::LANGCODE_DEFAULT,
+         'uid' => 'owner',
+         'revision' => 'revision_id',
+         'bundle' => 'type',
       ];
       $container = new ContainerBuilder();
 
@@ -43,6 +41,12 @@ namespace Drupal\Tests\quiz\Unit\Entity {
       $typedDataManagerProphecy
         ->getDefinition('field_item:string')
         ->willReturn(['class' => '\Drupal\Core\Field\Plugin\Field\FieldType\StringItem']);
+      $typedDataManagerProphecy
+        ->getDefinition('field_item:boolean')
+        ->willReturn(['class' => '\Drupal\Core\Field\Plugin\Field\FieldType\BooleanItem']);
+      $typedDataManagerProphecy
+        ->getDefinition('field_item:float')
+        ->willReturn(['class' => '\Drupal\Core\Field\Plugin\Field\FieldType\FloatItem']);
 
       // Mock a Field Item List.
       $fieldListProphecy = $this->prophesize('\Drupal\Core\Field\FieldItemListInterface');
@@ -87,20 +91,19 @@ namespace Drupal\Tests\quiz\Unit\Entity {
         ->willReturn($key_map);
       $entityTypeProphecy->getBundleEntityType()
         ->willReturn($bundleTypeProphecy->reveal());
-      $entityTypeProphecy->getLabelCallback()->willReturn(NULL);
-      $entityTypeProphecy->getBundleLabel()->willReturn('Question type');
+      $entityTypeProphecy->getBundleLabel()->willReturn('Question Response type');
       $entityTypeProphecy->isRevisionable()->willReturn(TRUE);
-      $entityTypeProphecy->isTranslatable()->willReturn(TRUE);
+      $entityTypeProphecy->isTranslatable()->willReturn(FALSE);
       $entityType = $entityTypeProphecy->reveal();
 
       // Mock the entity manager.
       // @todo this should be replaced by entity type manager in 9.0.0.
       $entityManagerProphecy = $this->prophesize('\Drupal\Core\Entity\EntityManagerInterface');
       $entityManagerProphecy
-        ->getDefinition('quiz_question')
+        ->getDefinition('quiz_question_response')
         ->willReturn($entityType);
-      $entityManagerProphecy->getFieldDefinitions('quiz_question', 'blank')
-        ->willReturn(Question::baseFieldDefinitions($entityType));
+      $entityManagerProphecy->getFieldDefinitions('quiz_question_response', 'blank')
+        ->willReturn(QuestionResponse::baseFieldDefinitions($entityType));
 
       // Set the container with the entity manager.
       $container->set('entity.manager', $entityManagerProphecy->reveal());
@@ -109,23 +112,17 @@ namespace Drupal\Tests\quiz\Unit\Entity {
     }
 
     /**
-     * Assert that the question entity can be created.
+     * Assert that a question response entity is created correctly.
      */
-    public function testQuestionProperties() {
+    public function testQuestionResponseProperties() {
       $values = [
-        'title' => [
-          LanguageInterface::LANGCODE_DEFAULT => $this->getRandomGenerator()->sentences(5),
-        ],
-        'status' => 1,
-        'owner' => 1,
-        'langcode' => LanguageInterface::LANGCODE_DEFAULT,
+        'owner' => 1
       ];
 
-      $question = new Question($values, 'quiz_question', 'blank');
+      $response = new QuestionResponse($values, 'quiz_question_response', 'blank');
 
-      $this->assertEquals('blank', $question->bundle());
-      $this->assertEquals('quiz_question', $question->getEntityTypeId());
-      $this->assertEquals($values['title'][LanguageInterface::LANGCODE_DEFAULT], $question->label());
+      $this->assertEquals('blank', $response->bundle());
+      $this->assertEquals('quiz_question_response', $response->getEntityTypeId());
     }
 
   }

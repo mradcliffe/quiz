@@ -23,6 +23,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *   entity_keys = {
  *     "id" = "question_id",
  *     "bundle" = "type",
+ *     "revision" = "revision_id",
  *     "label" = "title",
  *     "langcode" = "langcode",
  *     "uuid" = "uuid",
