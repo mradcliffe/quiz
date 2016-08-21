@@ -53,6 +53,7 @@ install:
 
 before_script:
   - drupal-ti before_script
+  - drush --yes pm-enable truefalse
 
 script:
   - drupal-ti script
