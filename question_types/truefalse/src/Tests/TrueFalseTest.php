@@ -9,7 +9,7 @@ use Drupal\quiz\Tests\QuizTestBase;
  *
  * @group Quiz
  */
-class TrueFalseTestCase extends QuizTestBase {
+class TrueFalseTest extends QuizTestBase {
 
   static protected $modules = ['views', 'quiz', 'truefalse'];
 
