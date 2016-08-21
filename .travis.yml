@@ -53,7 +53,7 @@ install:
 
 before_script:
   - drupal-ti before_script
-  - drupal-ti --include .travis-before-script.sh
+  - drupal-ti --include "$DRUPAL_TI_MODULES_PATH/.travis-before-script.sh"
 
 script:
   - drupal-ti script
