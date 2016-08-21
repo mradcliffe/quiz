@@ -53,7 +53,7 @@ install:
 
 before_script:
   - drupal-ti before_script
-  - cd "$TRAVIS_BUILD_DIR/../drupal-8"
+  - cd "$TRAVIS_BUILD_DIR/../drupal-8/drupal"
   - drush --yes pm-enable truefalse
 
 script:
