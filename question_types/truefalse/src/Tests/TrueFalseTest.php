@@ -11,7 +11,7 @@ use Drupal\quiz\Tests\QuizTestBase;
  */
 class TrueFalseTest extends QuizTestBase {
 
-  static protected $modules = ['views', 'quiz', 'truefalse'];
+  static protected $modules = ['views', 'plugin', 'quiz', 'truefalse'];
 
   /**
    * Assert that the truefalse module is installed correctly.

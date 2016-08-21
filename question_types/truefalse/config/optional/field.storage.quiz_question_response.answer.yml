@@ -1,14 +1,11 @@
 langcode: en
 status: true
-dependencies:
-  module:
-    - truefalse
-id: quiz_question.correct_answer
-field_name: correct_answer
-entity_type: quiz_question
+id: quiz_question_response.answer
+field_name: answer
+entity_type: quiz_question_response
 type: boolean
 settings: {  }
-module: field
+module: core
 locked: false
 cardinality: 1
 translatable: true

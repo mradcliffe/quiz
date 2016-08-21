@@ -1,15 +1,12 @@
 langcode: en
 status: true
-dependencies:
-  module:
-    - truefalse
 id: quiz_question_response.score
 field_name: score
 entity_type: quiz_question_response
 type: float
 settings:
   min: 0.0
-module: field
+module: core
 locked: false
 cardinality: 1
 translatable: true

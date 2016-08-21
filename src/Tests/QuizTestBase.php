@@ -10,7 +10,7 @@ use Drupal\simpletest\WebTestBase;
  */
 abstract class QuizTestBase extends WebTestBase {
 
-  static protected $modules = ['views', 'quiz'];
+  static protected $modules = ['views', 'plugin', 'quiz'];
 
   /**
    * {@inheritdoc}
