@@ -1,0 +1,9 @@
+langcode: en
+dependencies:
+  enforced:
+    module:
+      - truefalse
+name: 'True/False Question'
+type: truefalse
+plugin:
+  plugin_id: truefalse

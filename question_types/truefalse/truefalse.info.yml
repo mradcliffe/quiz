@@ -1,0 +1,7 @@
+type: module
+name: 'Quiz - True false'
+description: 'Module to create True or False Kind of Questions'
+core: 8.x
+package: 'Quiz core'
+dependencies:
+  - quiz

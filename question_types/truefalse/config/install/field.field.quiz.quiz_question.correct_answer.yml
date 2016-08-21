@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - quiz.quiz_question_type.truefalse
+    - field.storage.quiz_question.correct_answer
+id: quiz.quiz_question_type.truefalse.correct_answer
+field_name: correct_answer
+entity_type: quiz_question
+bundle: truefalse
+label: 'Correct Answer'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+settings: {  }
+field_type: boolean

@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - quiz.quiz_question_response_type.truefalse
+    - field.storage.quiz_question_response.score
+id: quiz.quiz_question_response_type.truefalse.score
+field_name: score
+entity_type: quiz_question_response
+bundle: truefalse
+label: 'Score'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0.0
+settings: {  }
+field_type: float

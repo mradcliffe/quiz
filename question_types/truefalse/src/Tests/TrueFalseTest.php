@@ -1,32 +1,42 @@
 <?php
 
-/**
- * @file
- * Unit tests for the truefalse Module.
- */
+namespace Drupal\truefalse\Tests;
+
+use Drupal\quiz\Tests\QuizTestBase;
 
 /**
  * Test class for true false questions.
+ *
+ * @group Quiz
  */
-class TrueFalseTestCase extends QuizQuestionTestCase {
+class TrueFalseTestCase extends QuizTestBase {
 
-  var $question_node_type = 'truefalse';
+  static protected $modules = ['views', 'quiz', 'truefalse'];
 
-  public static function getInfo() {
-    return array(
-      'name' => t('True/False'),
-      'description' => t('Unit test for true or false question type.'),
-      'group' => t('Quiz'),
-    );
-  }
+  /**
+   * Assert that the truefalse module is installed correctly.
+   */
+  public function testModuleInstalled() {
+    $entityBundleInfo = $this->container->get('entity_type.bundle.info');
 
-  function setUp($modules = array(), $admin_permissions = array(), $user_permissions = array()) {
-    parent::setUp(array('truefalse'));
+    $questionInfo = $entityBundleInfo->getBundleInfo('quiz_question');
+
+    $this->assertTrue(isset($questionInfo['truefalse']), 'Found TrueFalse question type.');
+
+    $responseInfo = $entityBundleInfo->getBundleInfo('quiz_question_response');
+
+    $this->assertTrue(isset($responseInfo['truefalse']), 'Found TrueFalse question response type.');
+
+    $pluginDefinition = $this->container->get('quiz.question_type_manager');
+    $definitions = $pluginDefinition->getDefinitions();
+
+    $this->assertTrue(isset($definitions['truefalse']), 'Found TrueFalse question plugin.');
   }
 
   /**
    * Test adding and taking a truefalse question.
    */
+  /**
   function testCreateQuizQuestion() {
     // Login as our privileged user.
     $this->drupalLogin($this->admin);
@@ -109,10 +119,12 @@ class TrueFalseTestCase extends QuizQuestionTestCase {
     $this->assertRaw('quiz-score-icon incorrect');
     $this->assertRaw('quiz-score-icon should');
   }
+  */
 
   /**
    * Test that the question response can be edited.
    */
+  /**
   function testEditQuestionResponse() {
     // Create & link a question.
     $question_node = $this->testCreateQuizQuestion();
@@ -138,4 +150,7 @@ class TrueFalseTestCase extends QuizQuestionTestCase {
       "question[$question_node->nid][answer]" => 1,
       ), t('Next'));
   }
+  */
+
+
 }

@@ -16,7 +16,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *     "list_builder" = "Drupal\quiz\QuestionResponseTypeListBuilder"
  *   },
  *   admin_permission = "administer quiz configuration",
- *   config_prefix = "",
+ *   config_prefix = "quiz_question_response_type",
  *   bundle_of = "quiz_question_response",
  *   entity_keys = {
  *     "id" = "type",
@@ -30,4 +30,11 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  * )
  */
 class QuestionResponseType extends ConfigEntityBundleBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function id() {
+    return $this->type;
+  }
 }

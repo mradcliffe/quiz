@@ -19,7 +19,7 @@ class QuestionResponseTypeTest extends UnitTestCase {
    * Assert that the question response type class is returned.
    */
   public function testQuestionResponseTypeEntity() {
-    $values = [];
+    $values = ['type' => 'test'];
     $bundle = new QuestionResponseType($values, 'quiz_question_response_type');
 
     $this->assertInstanceOf('\Drupal\quiz\Entity\QuestionResponseType', $bundle);
@@ -30,7 +30,7 @@ class QuestionResponseTypeTest extends UnitTestCase {
    */
   public function testAccessHandlerExists() {
     $container = new ContainerBuilder();
-    $bundle = new QuestionResponseType([], 'quiz_question_type');
+    $bundle = new QuestionResponseType(['type' => 'test'], 'quiz_question_type');
 
     $accountProphecy = $this->prophesize('\Drupal\Core\Session\AccountInterface');
     $account = $accountProphecy->reveal();
@@ -87,6 +87,15 @@ class QuestionResponseTypeTest extends UnitTestCase {
     $row = $listBuilder->buildRow($question);
     $this->assertArrayEquals($expected_header, $header);
     $this->assertArrayEquals($expected_row, $row);
+  }
+
+  /**
+   * Assert that id method returns a string.
+   */
+  public function testId() {
+    $bundle = new QuestionResponseType(['type' => 'test'], 'quiz_question_type');
+
+    $this->assertEquals('test', $bundle->id());
   }
 
 }
